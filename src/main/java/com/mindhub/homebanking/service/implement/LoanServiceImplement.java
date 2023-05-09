@@ -16,7 +16,10 @@ public class LoanServiceImplement implements LoanService {
     @Autowired
     LoanRepository loanRepository;
 
-
+    @Override
+    public void saveLoan(Loan loan) {
+        loanRepository.save(loan);
+    }
     @Override
     public Optional<Loan> FindById(long id) {
         return loanRepository.findById(id);

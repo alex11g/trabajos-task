@@ -107,6 +107,9 @@ pre{
   align-items: center;
   flex-direction: column;
 }
+.DESCRIPCION{
+  margin-left: 1.7rem;
+}
 
 .main1 {
   width: 100%;

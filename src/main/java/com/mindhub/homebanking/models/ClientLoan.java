@@ -15,8 +15,9 @@ public class ClientLoan {
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
     private double amount;
-
     private int payments;
+
+
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="client")
@@ -33,6 +34,8 @@ public class ClientLoan {
     public ClientLoan( double amount, int payments) {
         this.amount = amount;
         this.payments = payments;
+
+
     }
 
     public long getId() {
@@ -72,15 +75,4 @@ public class ClientLoan {
     }
 
 
-
-    @Override
-    public String toString() {
-        return "ClientLoan{" +
-                "id=" + id +
-                ", amount=" + amount +
-                ", payments=" + payments +
-                ", client=" + client +
-
-                '}';
-    }
 }

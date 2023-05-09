@@ -9,4 +9,5 @@ import java.util.Optional;
 public interface LoanService {
     Optional<Loan> FindById(long id);
     List<LoanDTO> getLoanDTO();
+    void saveLoan(Loan loan);
 }
