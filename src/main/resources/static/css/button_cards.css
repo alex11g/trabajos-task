@@ -1,0 +1,64 @@
+.button-cards{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button1 {
+    position: relative;
+    width: 150px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    background-color: #565656;
+    text-decoration: none;
+  }
+  
+  .button1, .button__icon1, .button__text1 {
+    transition: all 0.3s;
+  }
+  
+  .button1 .button__text1 {
+    transform: translateX(30px);
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  
+  .button1 .button__icon1 {
+    position: absolute;
+    transform: translateX(109px);
+    height: 100%;
+    width: 39px;
+    background-color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .button1 .svg1 {
+    width: 30px;
+    stroke: #fff;
+  }
+  
+  .button1:hover {
+    background: #575858;
+  }
+  
+  .button1:hover .button__text1 {
+    color: transparent;
+  }
+  
+  .button1:hover .button__icon1 {
+    width: 148px;
+    transform: translateX(0);
+  }
+  
+  .button1:active .button__icon1 {
+    background-color: #4d4f4e;
+  }
+  
+  .button1:active1 {
+    border: 1px solid #4b4c4b;
+  }

@@ -1,0 +1,131 @@
+.botton-elegir {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 10px 30px;
+    transition: 0.5s;
+    position: relative;
+    font-size: 17px;
+    background: #333;
+    border: none;
+    color: #fff;
+    width: 25rem;
+    margin-left: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .botton-elegir:hover {
+    letter-spacing: 0.25em;
+    background: #18d5ff;
+    color: #18c9ff;
+    box-shadow: 0 0 45px #18ffff;
+  }
+  
+  .botton-elegir::before {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: #222222;
+  }
+  
+  .botton-elegir span {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .botton-elegir i {
+    position: absolute;
+    inset: 0;
+    display: block;
+  }
+  
+  .botton-elegir i::before {
+    content: '';
+    position: absolute;
+    border: 2px solid #1871ff;
+    width: 7px;
+    height: 4px;
+    top: -3.5px;
+    left: 80%;
+    background: #222222;
+    transform: translateX(-50%);
+    transition: 0.5s;
+  }
+  
+  .botton-elegir:hover i::before {
+    width: 20px;
+    left: 20%;
+  }
+  
+  .botton-elegir i::after {
+    content: '';
+    position: absolute;
+    border: 2px solid #1869ff;
+    width: 7px;
+    height: 4px;
+    bottom: -3.5px;
+    left: 20%;
+    background: #222222;
+    transform: translateX(-50%);
+    transition: 0.5s;
+  }
+  
+  .botton-elegir:hover i::after {
+    width: 20px;
+    left: 80%;
+  }
+
+
+
+  @media (min-width: 768px) and (max-width: 1023px){
+   
+  }
+  @media (min-width: 425px) and (max-width: 767px){
+    .botton-elegir {
+        margin-left: 0rem;
+        
+      }
+      .container{
+        margin-top: 9rem;
+      }
+      footer{
+        margin-top: 7rem;
+      }
+  }
+  @media (min-width: 375px) and (max-width: 424px){
+    .botton-elegir {
+        margin-left: 0rem;
+        margin-top: 2rem;
+        width: 20rem;
+      }
+      footer{
+        margin-top: 7rem;
+      }
+      .description{
+        margin-left: 1.8rem;
+      }
+      .container{
+        margin-top: 9rem;
+      }
+      .N-cuenta {
+        margin-left: 1.6rem;
+    }
+  }
+  @media (min-width: 320px) and (max-width: 374px){
+    .botton-elegir {
+        margin-left: 0rem;
+        margin-top: 2rem;
+        width: 20rem;
+      }
+      footer{
+        margin-top: 7rem;
+      }
+      .description{
+        margin-left: 1.8rem;
+      }
+      .container{
+        margin-top: 9rem;
+      }
+      .N-cuenta {
+        margin-left: 1.6rem;
+    }
+  }

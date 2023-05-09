@@ -1,0 +1,179 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+
+table tr td {
+  border: 1px solid rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  width: 22%;
+  background-color: #212121ac;
+
+}
+h2{
+  color: white ;
+  margin-top: 2.5rem !important;
+}
+body{
+  background: #bdc3c7;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
+}
+
+th {
+  color: white;
+  background-color: #212121;
+}
+.table{
+  background-color: #202020a5;
+}
+.logo{
+  width: 4rem;
+  margin-left: 2rem;
+}
+.banco{
+  width: 20rem;
+}
+
+.padre{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  min-height: 33rem;
+}
+.div-banco p{
+  width: 28rem;
+}
+.cerrar{
+  width: 2rem;
+  margin-left: 2rem;
+}
+.main-pag{
+  min-height: 80.7vh;
+}
+footer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10.2vh;
+  background-color: white;
+  margin-top: 2.9rem;
+}
+h1{
+  color: white !important;
+  margin-top: 1rem !important;
+  background-color: #202020a5;
+  width: 100%;
+}
+.padre-register{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30rem;
+}
+.nav{
+  width: 100%;
+  display: flex !important;
+}
+.nav a{
+  margin-left: 1rem;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+}
+.navbar {
+  background-color: #fffefe !important;
+  height: 8vh;
+}
+.nav-item a{
+  color: rgb(0, 0, 0);
+  margin-left: 1.5rem;
+  text-decoration: none;
+}
+
+pre{
+  width: 30rem;
+  height: 20rem;
+  background-color: #519dcb8b;
+}
+
+
+.main2 {
+  min-height: 83vh;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.main1 {
+  width: 100%;
+}
+
+
+.logooo {
+  width: 50px !important;
+}
+
+.DEBIT {
+  color: red !important;
+}
+
+.CREDIT {
+  color: green !important;
+  
+}
+
+
+@media (min-width: 768px) and (max-width: 1023px){
+  .div-banco p{
+    width: 19rem;
+  }
+  .padre{
+    flex-direction: column;
+  }
+}
+@media (min-width: 425px) and (max-width: 767px){
+  .div-banco p{
+    width: 19rem;
+  }
+  .padre{
+    flex-direction: column;
+  }
+  .nav{
+    align-items: center;
+    justify-content: space-evenly;
+  }
+}
+@media (min-width: 375px) and (max-width: 424px){
+  .div-banco p{
+    width: 19rem;
+  }
+  .padre{
+    flex-direction: column;
+  }
+  .nav{
+    align-items: center;
+    justify-content: space-evenly;
+  }
+}
+@media (min-width: 320px) and (max-width: 374px){
+  
+  .div-banco p{
+    width: 19rem;
+  }
+  .padre{
+    flex-direction: column;
+  }
+  .nav{
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  table tr{
+    font-size: 12px;
+  }
+  
+}
+

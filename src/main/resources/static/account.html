@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/accounts.css">
+    <link rel="icon" href="./img/bank_PNG5.png">
+
+</head>
+
+<body id="app">
+
+    <nav class="navbar">
+
+        <div class="nav">
+            <a class="" href="./acconts.html">Acconts</a>
+            <a class="" href="./cards.html">Cards</a>
+            <a class="" href="./transfer.html">Transfer</a>
+            <img @click.prevent="logout" class="cerrar" src="./img/cerrar-sesion.png" alt="">
+        </div>
+    </nav>
+
+  
+    <main class="main-pag">
+        <div class="encabezado">
+            <h1 class="d-flex justify-content-center align-items-center">TRANSACTIONS</h1>
+        </div>
+        
+
+        
+
+        <div class=" d-flex justify-content-center align-items-center">
+            <template v-if="transactions.length > 0">
+                <table class="table container">
+                    <thead >
+                        <tr>
+                            <th class="text-center">Date</th>
+                            <th class="text-center">Amount</th>
+                            <th class="text-center">Description</th>
+                            <th class="text-center">Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template v-for="datos of transactions">
+                            <tr>
+                                <td :class="datos.type" class="text-center">{{datos.date.slice(0,10)}} at {{datos.date.slice(11,16)}}</td>
+                                <td :class="datos.type" class="text-center">$ {{datos.amount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}}</td>
+                                <td  :class="datos.type" class="text-center">{{datos.description}}</td>
+                                <td  :class="datos.type" class="text-center">{{datos.type}}</td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </template>
+            <template v-else="">
+                <h2>You have no transfer</h2>
+            </template>
+            
+        </div>
+       
+    </main>
+
+
+
+
+    <footer>
+        <h4>FinanzaBank</h4>
+    </footer>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+    <script src="./js/account.js"></script>
+</body>
+
+</html>
