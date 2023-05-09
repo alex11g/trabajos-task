@@ -38,12 +38,15 @@
         <div class=" d-flex justify-content-center align-items-center">
             <template v-if="transactions.length > 0">
                 <table class="table container">
+                    
                     <thead >
+                        
                         <tr>
                             <th class="text-center">Date</th>
                             <th class="text-center">Amount</th>
                             <th class="text-center">Description</th>
                             <th class="text-center">Type</th>
+                            <th class="text-center">Current account amount</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -53,6 +56,8 @@
                                 <td :class="datos.type" class="text-center">$ {{datos.amount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}}</td>
                                 <td  :class="datos.type" class="text-center">{{datos.description}}</td>
                                 <td  :class="datos.type" class="text-center">{{datos.type}}</td>
+                                <td  :class="datos.type" class="text-center">{{datos.balance.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}}</td>
+                                
                             </tr>
                         </template>
                     </tbody>
@@ -63,6 +68,7 @@
             </template>
             
         </div>
+        
        
     </main>
 

@@ -21,6 +21,7 @@ public class ClientLoanDTO {
         this.amount = clientLoan.getAmount();
         this.payments = clientLoan.getPayments();
 
+
     }
 
     public long getId() {
@@ -42,4 +43,6 @@ public class ClientLoanDTO {
     public int getPayments() {
         return payments;
     }
+
+
 }

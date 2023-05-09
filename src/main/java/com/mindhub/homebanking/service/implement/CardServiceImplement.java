@@ -6,6 +6,7 @@ import com.mindhub.homebanking.models.Card;
 import com.mindhub.homebanking.repositories.CardRepository;
 import com.mindhub.homebanking.repositories.ClientRepository;
 import com.mindhub.homebanking.service.CardService;
+import com.mindhub.homebanking.utils.CardUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
@@ -38,4 +39,19 @@ public class CardServiceImplement implements CardService {
     public void saveCard(Card card) {
         cardRepository.save(card);
     }
+
+    @Override
+    public Card findById(Long id) {
+        return cardRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public String notRepeat() {
+        String randomNumberCard;
+        do {
+            randomNumberCard = CardUtils.getCards();
+        } while(cardRepository.findByNumber(randomNumberCard) != null);
+        return randomNumberCard;
+    }
+
 }

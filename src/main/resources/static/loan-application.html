@@ -25,7 +25,7 @@
     </nav>
 
 
-    <main >
+    <main>
 
         <h1 class="text-center">Add loans now</h1>
 
@@ -42,25 +42,27 @@
                                 </template>
 
                             </select>
-                            <h4 class="text-light h4">Choose in how many installments</h4>
-                            <div>
-                                <select class="form-select form-select-lg " v-model="payments">
-                                    <option selected class="text-center">PAYMENTS</option>
-                                    <template v-for="valor of Payments2">
-                                        <option :value="valor">{{valor}}</option>
-                                    </template>
-                                </select>
-                            </div>
+
+
                             <h4 class="text-light h4">Amount to ask</h4>
                             <div class="input-group input-group-lg div-amount">
 
                                 <span class="input-group-text" id="inputGroup-sizing-lg"><ion-icon
                                         name="cash-outline"></ion-icon></span>
-                                <input @input="interests" type="number" class="form-control"
-                                    aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"
-                                    v-model="amount" />
+                                <input type="number" class="form-control" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-lg" v-model="amount" />
+                            </div>
+                            <h4 class="text-light h4">Choose in how many installments</h4>
+                            <div>
+                                <select class="form-select form-select-lg " v-model="payments">
+                                    <option selected class="text-center">PAYMENTS</option>
+                                    <template v-for="valor of Payments2">
+                                        <option :value="valor">{{valor + " (CFT " + interest + "%)" + " QuotaValue:$" +
+                                            (amount * interest / valor ).toFixed(2)+" TotalValue:$"+ (amount *
+                                            interest)}}</option>
 
-
+                                    </template>
+                                </select>
                             </div>
                             <h4 class="text-light h4">Choose which account you want your loan to</h4>
                             <select class="form-select form-select-lg " aria-label=".form-select-lg example"
@@ -73,8 +75,8 @@
 
                             <p class="text-p-loans ">Remember that you will have to repay 20% more than the requested
                                 loan</p>
-                            <h4 class="text-light text-center">MAX AMOUNT : U$D <span
-                                    class="text-light">{{monto}}</span></h4>
+                            <h4 class="text-light text-center">MAX AMOUNT : U$D: <span
+                                    class="text-light">{{(monto)}}</span></h4>
 
 
 

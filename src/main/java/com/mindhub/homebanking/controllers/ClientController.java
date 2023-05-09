@@ -2,9 +2,11 @@ package com.mindhub.homebanking.controllers;
 
 import com.mindhub.homebanking.dtos.ClientDTO;
 import com.mindhub.homebanking.models.Account;
+import com.mindhub.homebanking.models.AccountType;
 import com.mindhub.homebanking.models.Client;
 import com.mindhub.homebanking.repositories.AccountRepository;
 import com.mindhub.homebanking.repositories.ClientRepository;
+import com.mindhub.homebanking.service.AccountService;
 import com.mindhub.homebanking.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,48 +25,37 @@ import java.util.stream.Collectors;
 @RequestMapping("/api")
 public class ClientController {
 
-
-
    @Autowired
     private ClientRepository clientRepository;
     @Autowired
     private AccountRepository accountRepository;
     @Autowired
+    private AccountService accountService;
+    @Autowired
     private PasswordEncoder passwordEncoder;
     @Autowired
     private ClientService clientService;
 
-    public String randomNumber(){
-        String randomNumber;
-        do {
-            int number = (int) (Math.random() * 999999 + 100000);
-            randomNumber = String.valueOf(number);
-        } while (accountRepository.findByNumber(randomNumber) != null);
-        return randomNumber;
-    }
 
-    @RequestMapping("/clients")
+
+
+    @GetMapping("/clients")
     public List<ClientDTO> getClients (){
        return clientService.getClient();
     };
-
-
-    @RequestMapping("/clients/{id}")
+    @GetMapping("/clients/{id}")
     public ClientDTO getClient(@PathVariable Long id ){
         return clientService.getClientDTO(id);
     };
-    @RequestMapping("/clients/current")
+    @GetMapping("/clients/current")
     public ClientDTO getClient(Authentication authentication){
         return clientService.getClient(authentication);
     }
 
-    @RequestMapping(path = "/clients", method = RequestMethod.POST)
+    @PostMapping("/clients")
     public ResponseEntity<Object> register(
             @RequestParam String firstName, @RequestParam String lastName,
             @RequestParam String email, @RequestParam String password) {
-
-
-
         if (firstName.isBlank()  || !firstName.matches("^[a-zA-Z]*$")){
             return new ResponseEntity<>("Invalid name, only letters are allowed.", HttpStatus.FORBIDDEN);
         }
@@ -87,8 +78,8 @@ public class ClientController {
 
         Client newClient = new Client(firstName, email,lastName, passwordEncoder.encode(password));
         clientRepository.save(newClient);
-        String accountNumber = randomNumber();
-        Account newAccount = new Account("VIN-" + accountNumber, 0, LocalDateTime.now());
+        String accountNumber = accountService.aleatoryNumberNotRepeat();
+        Account newAccount = new Account("VIN-" + accountNumber, 0, LocalDateTime.now(),true, AccountType.SAVING);
         newClient.addAccount(newAccount);
         accountRepository.save(newAccount);
 

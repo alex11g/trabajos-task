@@ -17,10 +17,10 @@ public class Account {
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
     private String number;
-
-
     private double balance;
     private LocalDateTime creationDate;
+    private boolean active;
+    private AccountType type;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="client_id")
     private Client client;
@@ -33,10 +33,12 @@ public class Account {
     public Account() {
     }
 
-    public Account(String number, double balance, LocalDateTime creationDate) {
+    public Account(String number, double balance, LocalDateTime creationDate,boolean active, AccountType type) {
         this.number = number;
         this.balance = balance;
         this.creationDate = creationDate;
+        this.active = active;
+        this.type = type;
     }
     public void addTransaction(Transaction transaction) {
         transaction.setAccount(this);
@@ -89,15 +91,17 @@ public class Account {
         return transactions;
     }
 
-    @Override
-    public String toString() {
-        return "Account{" +
-                "id=" + id +
-                ", number='" + number + '\'' +
-                ", balance=" + balance +
-                ", creationDate=" + creationDate +
-                ", client=" + client +
-                ", transactions=" + transactions +
-                '}';
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+    public AccountType getType() {
+        return type;
+    }
+    public void setType(AccountType type) {
+        this.type = type;
     }
 }

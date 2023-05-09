@@ -3,6 +3,7 @@ const { createApp } = Vue;
 createApp({
 	data() {
 		return {
+			datos : [],
 			account: [],
 			transactions: [],
 			type: "",
@@ -27,6 +28,14 @@ createApp({
 				})
 				
 		},
+		loadData2(){
+			axios.get("http://localhost:8080/api/clients/current")
+            .then(response =>{
+                this.datos= response.data
+                console.log(this.datos);
+            })
+            .catch(error => console.log(error))
+		},
 		logout() {
             Swal.fire({
                 title: 'Are you sure you want to log out?',
@@ -46,7 +55,8 @@ createApp({
                 },
                 allowOutsideClick: () => !Swal.isLoading()
             })
-        }
+        },
+		
 	},
 	
         
