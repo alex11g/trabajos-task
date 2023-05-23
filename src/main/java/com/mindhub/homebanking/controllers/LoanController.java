@@ -158,11 +158,6 @@ public class LoanController {
         } else {
             clientLoan.setPayments(0);
         }
-
-
-
-
-
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }

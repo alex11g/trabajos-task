@@ -7,6 +7,7 @@ const app = createApp({
         return {
             loans: [],
             accounts: [],
+            datos2: [],
             interest: "",
             account: "",
             filter: "",
@@ -25,7 +26,8 @@ const app = createApp({
         axios.get("http://localhost:8080/api/clients/current")
             .then(response => {
                 this.accounts = response.data;
-                console.log(this.accounts)
+                this.datos2 = this.accounts.accountDTOS.filter(valor => valor.active)
+                console.log(this.datos2)
             })
             .catch(error => console.log(error))
 

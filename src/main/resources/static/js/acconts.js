@@ -14,6 +14,7 @@ const app = createApp({
             loan2:[],
             quotas: 0,
             totalPay: 0,
+            type1: "",
 
         }
     },
@@ -75,7 +76,7 @@ const app = createApp({
                 confirmButtonText: 'Yes',
                 showLoaderOnConfirm: true,
                 preConfirm: (login) => {
-                    return axios.post('/api/clients/current/accounts')
+                    return axios.post("/api/clients/current/accounts","type="+this.type1)
                         .then(response => {
                             window.location.href = "/acconts.html"
                         })

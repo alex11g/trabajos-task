@@ -71,7 +71,7 @@ public class AccountController {
     }
 
     @PostMapping("/api/clients/current/accounts")
-    public ResponseEntity<Object> createAccount(Authentication authentication) {
+    public ResponseEntity<Object> createAccount(Authentication authentication , @RequestParam String type) {
         Client client = clientService.findByEmail(authentication.getName());
         if (client.getAccounts().stream().filter(valor -> valor.isActive()).collect(Collectors.toList()).size() >= 3) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN)
@@ -79,7 +79,7 @@ public class AccountController {
         }
 
         String accountNumber = randomNumber();
-        Account newAccount = new Account(accountNumber, 0.0 , LocalDateTime.now(),true, AccountType.SAVING);
+        Account newAccount = new Account(accountNumber, 0.0 , LocalDateTime.now(),true, AccountType.valueOf(type));
         client.addAccount(newAccount);
         accountService.saveAccount(newAccount);
 
