@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Random;
 
 public final class CardUtils {
-
     private CardUtils() {
     }
 

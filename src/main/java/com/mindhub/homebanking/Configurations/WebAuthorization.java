@@ -23,12 +23,20 @@ public class WebAuthorization {
                 .antMatchers("/js/**" ).permitAll()
                 .antMatchers("/css/**" ).permitAll()
                 .antMatchers("/img/**" ).permitAll()
-                .antMatchers("/acconts.html","/account.html","/loan-application.html" , "/cards.html",
-                        "/create-cards.html","/transfer.html","/api/clients/current").hasAnyAuthority("CLIENT","ADMIN")
+                .antMatchers(  "/register.html","/api/clients","/api/clients/current/accounts", "/api/clients/current/**" , "/api/loans").permitAll()
                 .antMatchers( HttpMethod.POST, "/api/login" , "/api/logout").permitAll()
-                .antMatchers( HttpMethod.POST, "/api/transaction").hasAnyAuthority("CLIENT","ADMIN")
                 .antMatchers( HttpMethod.POST, "/api/clients").permitAll()
-                .antMatchers("/manager.html" , "/rest/**" , "/h2-console" , "/api/clients" , "/api/clients/").hasAuthority("ADMIN");
+                .antMatchers(HttpMethod.POST, "/api/loans/manager").hasAnyAuthority("ADMIN")
+                .antMatchers( HttpMethod.PUT,"/api/clients", "/api/clients/current/cards", "/api/clients/current/accounts").hasAnyAuthority("CLIENT","ADMIN")
+                .antMatchers( HttpMethod.POST,"/api/clients/current/accounts" , "/api/clients/current/cards" , "/api/clients/current/transactions" , "/api/logout" , "/api/loans" , "/api/current/loans").hasAnyAuthority("CLIENT","ADMIN")
+                .antMatchers("/acconts.html","/account.html","/loan-application.html" , "/cards.html",
+                        "/create-cards.html","/transfer.html","/api/clients/current" ,"/api/loans" ).hasAnyAuthority("CLIENT","ADMIN")
+                .antMatchers( HttpMethod.POST, "/api/transaction","/api/clients/current/cards", "/api/current/loans","/api/clients/current/accounts").hasAnyAuthority("CLIENT","ADMIN")
+                .antMatchers( HttpMethod.PUT,"/api/clients", "/api/clients/current/cards", "/api/clients/current/accounts").hasAnyAuthority("CLIENT","ADMIN")
+
+                .antMatchers("/manager.html" , "/rest/**" , "/h2-console" ).hasAuthority("ADMIN")
+                        .anyRequest().denyAll();
+
 
 
 
