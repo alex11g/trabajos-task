@@ -23,14 +23,18 @@ public class WebAuthorization {
                 .antMatchers("/js/**" ).permitAll()
                 .antMatchers("/css/**" ).permitAll()
                 .antMatchers("/img/**" ).permitAll()
-                .antMatchers("/acconts.html","/account.html","/loan-application.html" , "/cards.html",
-                        "/create-cards.html","/transfer.html","/api/clients/current").hasAnyAuthority("CLIENT","ADMIN")
+                .antMatchers(  "/register.html","/api/clients","/api/clients/current/accounts", "/api/clients/current/**" , "/api/loans").permitAll()
                 .antMatchers( HttpMethod.POST, "/api/login" , "/api/logout").permitAll()
-                .antMatchers( HttpMethod.POST, "/api/transaction").hasAnyAuthority("CLIENT","ADMIN")
                 .antMatchers( HttpMethod.POST, "/api/clients").permitAll()
-                .antMatchers("/manager.html" , "/rest/**" , "/h2-console" , "/api/clients" , "/api/clients/").hasAuthority("ADMIN");
-
-
+                .antMatchers(HttpMethod.POST, "/api/loans/manager").hasAnyAuthority("ADMIN")
+                .antMatchers( HttpMethod.PUT,"/api/clients", "/api/clients/current/cards", "/api/clients/current/accounts").hasAnyAuthority("CLIENT","ADMIN")
+                .antMatchers( HttpMethod.POST,"/api/clients/current/accounts" , "/api/clients/current/cards" , "/api/clients/current/transactions" , "/api/logout" , "/api/loans" , "/api/current/loans").hasAnyAuthority("CLIENT","ADMIN")
+                .antMatchers("/acconts.html","/account.html","/loan-application.html" , "/cards.html",
+                        "/create-cards.html","/transfer.html","/api/clients/current" ,"/api/loans" ).hasAnyAuthority("CLIENT","ADMIN")
+                .antMatchers( HttpMethod.POST, "/api/transaction","/api/clients/current/cards", "/api/current/loans","/api/clients/current/accounts").hasAnyAuthority("CLIENT","ADMIN")
+                .antMatchers( HttpMethod.PUT,"/api/clients", "/api/clients/current/cards", "/api/clients/current/accounts").hasAnyAuthority("CLIENT","ADMIN")
+                .antMatchers("/manager.html" , "/rest/**" , "/h2-console","/api/clients" ).hasAuthority("ADMIN")
+                .anyRequest().denyAll();
 
         http.formLogin()
                 .usernameParameter("email")
@@ -38,17 +42,22 @@ public class WebAuthorization {
                 .loginPage("/api/login");
         http.logout().logoutUrl("/api/logout").deleteCookies( "JSESSIONID");
 
-        // turn off checking for CSRF tokens
+        // por cada peticion que se haga en general, te va a traer un tokes, por eso se desactiva
         http.csrf().disable();
-        // disabling frameOptions so h2-console can be accessed
+
+        // esto se desactiva par poder utilizar el h2-console
         http.headers().frameOptions().disable();
-        // if user is not authenticated, just send an authentication failure response
+
+        // cuando un usuario intenta navegar por paginas no autorizadas te manda un error
         http.exceptionHandling().authenticationEntryPoint((req, res, exc) -> res.sendError(HttpServletResponse.SC_UNAUTHORIZED));
-        // if login is successful, just clear the flags asking for authentication
+
+        // si el login salio bien, no te pide que se este autenticando mientras navegues por la pagina
         http.formLogin().successHandler((req, res, auth) -> clearAuthenticationAttributes(req));
-        // if login fails, just send an authentication failure response
+
+        // si el login salio mal nos manda un error
         http.formLogin().failureHandler((req, res, exc) -> res.sendError(HttpServletResponse.SC_BAD_REQUEST));
-        // if logout is successful, just send a success response
+
+        // si el deslogueo salio bien te manda una respuesta exitosa
         http.logout().logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler());
 
         return http.build();

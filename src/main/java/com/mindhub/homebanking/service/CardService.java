@@ -13,4 +13,7 @@ public interface CardService {
     Card findByNumber(String number);
     Card findByCvv(int cvv);
     void saveCard(Card card);
+    String notRepeat();
+    Card findById(Long id);
+
 }

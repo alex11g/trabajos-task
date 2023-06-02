@@ -34,7 +34,18 @@ h1{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+ 
+
 }
+.footerCards{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 6.8vh;
+  background-color: white;
+  margin-top: 3rem;
+}
+
 .tarjeta2{
   width: 20%;
   color: #ffffff;
@@ -42,7 +53,7 @@ h1{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  
+ 
 }
 
 /* -------------------------------------------------------------------cards  1--------------------------------------------------------- */
@@ -51,8 +62,9 @@ h1{
     width: 240px;
     height: 154px;
     perspective: 1000px;
-    margin-top: 2rem;
+    
   }
+ 
   
   .heading_8264 {
     color: white;
@@ -61,7 +73,6 @@ h1{
     font-size: 0.5em;
     top: 1.5em;
     left: 10em;
-    font-size: 12px;
   }
   .heading_82644{
     color: white;
@@ -118,6 +129,15 @@ h1{
     font-size: 0.5em;
     top: 8em;
     left: 2.1em;
+    font-size: 13px;
+  }
+  .date_8265{
+    color: rgb(255, 0, 0);
+    position: absolute;
+    font-weight: bold;
+    font-size: 0.5em;
+    top: 8em;
+    left: 6.5em;
     font-size: 13px;
   }
   
