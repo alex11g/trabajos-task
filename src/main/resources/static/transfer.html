@@ -52,7 +52,7 @@
                                         <form>
                                             <h2>Send</h2>
                                             <label class="label">
-                                                <template v-for="accounts of data.accountDTOS">
+                                                <template v-for="accounts of datos2">
                                                     {{accounts.number}}
                                                 <input class="input" type="radio" name="cuenta" :value="accounts.number" v-model="ENVIAR" required>
                                                 </template>
@@ -63,7 +63,7 @@
                                         <form>
                                             <h2>Receive</h2>
                                             <label class="label">
-                                                <template v-for="accounts of data.accountDTOS">
+                                                <template v-for="accounts of datos2">
                                                  {{accounts.number}}
                                                 <input class="input" type="radio" name="cuenta" :value="accounts.number" v-model="RECIBIR" required>
                                                 </template>

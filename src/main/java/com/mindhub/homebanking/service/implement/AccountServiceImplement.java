@@ -18,9 +18,9 @@ import java.util.stream.Collectors;
 @Service
 public class AccountServiceImplement implements AccountService {
     @Autowired
-    ClientRepository clientRepository;
+    private ClientRepository clientRepository;
     @Autowired
-    AccountRepository accountRepository;
+    private AccountRepository accountRepository;
     @Override
     public List<AccountDTO> getAccounts() {
         return accountRepository.findAll()
@@ -58,7 +58,7 @@ public class AccountServiceImplement implements AccountService {
         Random random = new Random();
         int min = 100000;
         int max = 899999;
-        return ("VIN-" + random.nextInt(max + min));
+        return ("VIN" + random.nextInt(max + min));
     }
 
     @Override

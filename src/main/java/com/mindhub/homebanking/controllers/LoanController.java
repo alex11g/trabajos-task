@@ -24,7 +24,6 @@ public class LoanController {
     private ClientService clientService;
     @Autowired
     private AccountService accountService;
-
     @Autowired
     private ClientLoanService clientLoanService;
     @Autowired

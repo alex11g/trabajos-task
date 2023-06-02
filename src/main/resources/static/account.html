@@ -26,21 +26,21 @@
         </div>
     </nav>
 
-  
+
     <main class="main-pag">
         <div class="encabezado">
             <h1 class="d-flex justify-content-center align-items-center">TRANSACTIONS</h1>
         </div>
-        
 
-        
+
+
 
         <div class=" d-flex justify-content-center align-items-center">
             <template v-if="transactions.length > 0">
                 <table class="table container">
-                    
-                    <thead >
-                        
+
+                    <thead>
+
                         <tr>
                             <th class="text-center">Date</th>
                             <th class="text-center">Amount</th>
@@ -52,12 +52,15 @@
                     <tbody>
                         <template v-for="datos of transactions">
                             <tr>
-                                <td :class="datos.type" class="text-center">{{datos.date.slice(0,10)}} at {{datos.date.slice(11,16)}}</td>
-                                <td :class="datos.type" class="text-center">$ {{datos.amount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}}</td>
-                                <td  :class="datos.type" class="text-center">{{datos.description}}</td>
-                                <td  :class="datos.type" class="text-center">{{datos.type}}</td>
-                                <td  :class="datos.type" class="text-center">{{datos.balance.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}}</td>
-                                
+                                <td :class="datos.type" class="text-center">{{datos.date.slice(0,10)}} at
+                                    {{datos.date.slice(11,16)}}</td>
+                                <td :class="datos.type" class="text-center">$
+                                    {{datos.amount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}}</td>
+                                <td :class="datos.type" class="text-center">{{datos.description}}</td>
+                                <td :class="datos.type" class="text-center">{{datos.type}}</td>
+                                <td :class="datos.type" class="text-center">
+                                    {{datos.balance.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}}</td>
+
                             </tr>
                         </template>
                     </tbody>
@@ -66,10 +69,43 @@
             <template v-else="">
                 <h2>You have no transfer</h2>
             </template>
-            
+
         </div>
+
+
+        <table class="table container">
+            <template v-if="account.active != false">
+                <thead>
+
+                    <tr>
+                        <th class="text-center">Account Number</th>
+                        <th class="text-center">Time Created</th>
+                        <th class="text-center">Balance</th>
+                        <th class="text-center">Account Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td :class="datos.type" class="text-center">{{account.number}}</td>
+                        <td :class="datos.type" class="text-center">{{account.creationDate.slice(0,10)}} at
+                            {{account.creationDate.slice(11,16)}}</td>
+                        <td :class="datos.type" class="text-center">
+                            {{account.balance.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}}</td>
+                        <td :class="datos.type" class="text-center">{{account.type}}</td>
+                    </tr>
+                </tbody>
+            </template>
+            <template v-else="">
+                <p class="text-center">Account Inactive</p>
+            </template>
+        </table>
         
        
+
+
+
+
     </main>
 
 

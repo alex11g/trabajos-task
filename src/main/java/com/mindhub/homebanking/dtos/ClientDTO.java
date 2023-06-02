@@ -12,7 +12,6 @@ public class ClientDTO {
     private String name;
     private String email;
     private String lastName;
-
     private Set<AccountDTO> accountDTOS;
     private Set<ClientLoanDTO> clientLoanDTOS;
     private Set<CardDTO> cardDTOS;

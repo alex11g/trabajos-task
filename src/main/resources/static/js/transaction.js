@@ -9,6 +9,7 @@ createApp({
             DESCRIPTION:"",
             N_CUENTA: "",
             data:[],
+            datos2: [],
             mostrarImagen: 1,
         };
     },
@@ -16,6 +17,7 @@ createApp({
         axios.get('http://localhost:8080/api/clients/current')
         .then(response => {
             this.data = response.data
+            this.datos2 = this.data.accountDTOS.filter(valor => valor.active)
             console.log(this.data);
 
         })

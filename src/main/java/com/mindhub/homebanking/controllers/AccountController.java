@@ -22,18 +22,6 @@ public class AccountController {
     private ClientService clientService;
     @Autowired
     private AccountService accountService;
-
-
-    public String randomNumber(){
-
-         String randomNumber;
-        do {
-            int number = (int) (Math.random() * 899999 + 100000);
-            randomNumber = "VIN-" + number;
-        } while (accountService.findByNumber(randomNumber) != null);
-        return randomNumber;
-    }
-
     @GetMapping("/api/accounts")
     public List<AccountDTO> getAccounts(){
         return accountService.getAccounts();
@@ -43,8 +31,17 @@ public class AccountController {
         return accountService.getAccountAuthentication(authentication);
     }
     @GetMapping("/api/clients/current/accounts/{id}")
-    public AccountDTO getAccount (@PathVariable Long id){
-        return accountService.getAccountID(id);
+    public ResponseEntity<Object> getAccount(@PathVariable Long id, Authentication authentication){
+
+        Client client = clientService.getClientAutenticate(authentication);
+        Account account = accountService.getAccountId(id);
+        AccountDTO accountDTO = accountService.getAccountID(id);
+
+        if ( !client.getAccounts().stream().filter( accountCLient -> accountCLient.getId() == account.getId() ).collect(Collectors.toList()).isEmpty() ){
+            return new ResponseEntity<>(accountDTO, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("This account is not yours", HttpStatus.FORBIDDEN);
+        }
     }
     @PutMapping("/api/clients/current/accounts")
     public ResponseEntity<Object> deleteAccounts ( Authentication authentication , @RequestParam Long id){
@@ -78,7 +75,7 @@ public class AccountController {
                     .body("Customer already has the maximum number of accounts allowed.");
         }
 
-        String accountNumber = randomNumber();
+        String accountNumber = accountService.aleatoryNumber();
         Account newAccount = new Account(accountNumber, 0.0 , LocalDateTime.now(),true, AccountType.valueOf(type));
         client.addAccount(newAccount);
         accountService.saveAccount(newAccount);

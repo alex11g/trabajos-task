@@ -25,18 +25,14 @@ import java.util.stream.Collectors;
 @RequestMapping("/api")
 public class ClientController {
 
-   @Autowired
-    private ClientRepository clientRepository;
-    @Autowired
-    private AccountRepository accountRepository;
+
+
     @Autowired
     private AccountService accountService;
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Autowired
     private ClientService clientService;
-
-
 
 
     @GetMapping("/clients")
@@ -74,14 +70,12 @@ public class ClientController {
             return new ResponseEntity<>("Email already in use", HttpStatus.FORBIDDEN);
         }
 
-
-
         Client newClient = new Client(firstName, email,lastName, passwordEncoder.encode(password));
-        clientRepository.save(newClient);
+        clientService.saveClient(newClient);
         String accountNumber = accountService.aleatoryNumberNotRepeat();
         Account newAccount = new Account("VIN-" + accountNumber, 0, LocalDateTime.now(),true, AccountType.SAVING);
         newClient.addAccount(newAccount);
-        accountRepository.save(newAccount);
+        accountService.saveAccount(newAccount);
 
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

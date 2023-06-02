@@ -6,6 +6,7 @@ createApp({
 			datos : [],
 			account: [],
 			transactions: [],
+			datos2: [],
 			type: "",
 			description: "",
 
@@ -22,8 +23,8 @@ createApp({
 				.get('http://localhost:8080/api/clients/current/accounts/' + this.id)
 				.then(response => {
 					this.account = response.data;
-					this.transactions = this.account.transactions;
-					console.log(this.transactions);
+					this.transactions = this.account.transactions.filter(valor => valor.active);
+					console.log(this.account);
 
 				})
 				
@@ -32,6 +33,7 @@ createApp({
 			axios.get("http://localhost:8080/api/clients/current")
             .then(response =>{
                 this.datos= response.data
+				
                 console.log(this.datos);
             })
             .catch(error => console.log(error))

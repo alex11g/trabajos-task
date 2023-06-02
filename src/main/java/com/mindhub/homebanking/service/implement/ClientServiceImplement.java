@@ -27,6 +27,7 @@ public class ClientServiceImplement implements ClientService {
 
     @Override
     public ClientDTO getClientDTO(Long id) {
+
         return new ClientDTO(clientRepository.findById(id).orElse(null));
     }
 
