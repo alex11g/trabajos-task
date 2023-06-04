@@ -19,7 +19,7 @@ const app = createApp({
         }
     },
     created() {
-        axios.get("http://localhost:8080/api/clients/current")
+        axios.get("/api/clients/current")
             .then(response =>{
                 this.datos= response.data
                 this.datos2 = this.datos.accountDTOS.filter(valor => valor.active)
@@ -31,7 +31,7 @@ const app = createApp({
             .catch(error => console.log(error))
 
 
-            axios.get('http://localhost:8080/api/loans')
+            axios.get('/api/loans')
             .then(response => {
                 this.loans = response.data;
             })

@@ -13,7 +13,7 @@ const app = createApp({
         }
     },
     created() {
-        axios.get("http://localhost:8080/api/clients/current")
+        axios.get("/api/clients/current")
             .then(response => {
                 this.datos = response.data
                 this.datos_Debit = this.datos.cardDTOS.filter(valor => valor.type == "DEBIT" && valor.active)

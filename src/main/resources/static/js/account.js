@@ -20,7 +20,7 @@ createApp({
 		loadData() {
 			console.log(this.id)
 			axios
-				.get('http://localhost:8080/api/clients/current/accounts/' + this.id)
+				.get('/api/clients/current/accounts/' + this.id)
 				.then(response => {
 					this.account = response.data;
 					this.transactions = this.account.transactions.filter(valor => valor.active);
@@ -30,7 +30,7 @@ createApp({
 				
 		},
 		loadData2(){
-			axios.get("http://localhost:8080/api/clients/current")
+			axios.get("/api/clients/current")
             .then(response =>{
                 this.datos= response.data
 				
