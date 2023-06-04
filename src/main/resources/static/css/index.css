@@ -4,6 +4,10 @@
   box-sizing: border-box;
 
 }
+.pagar-prestamos{
+  display: flex;
+  justify-content: center;
+}
 
 table tr td {
   border: 1px solid rgb(0, 0, 0);
@@ -129,13 +133,20 @@ pre{
   
 }
 
-
+@media (min-width: 1024px) and (max-width: 1439px){
+  .logo{
+    width: 3rem;
+  }
+}
 @media (min-width: 768px) and (max-width: 1023px){
   .div-banco p{
     width: 19rem;
   }
   .padre{
     flex-direction: column;
+  }
+  .logo{
+    width: 3rem;
   }
 }
 @media (min-width: 425px) and (max-width: 767px){
@@ -149,6 +160,9 @@ pre{
     align-items: center;
     justify-content: space-evenly;
   }
+  .logo{
+    width: 3rem;
+  }
 }
 @media (min-width: 375px) and (max-width: 424px){
   .div-banco p{
@@ -160,6 +174,9 @@ pre{
   .nav{
     align-items: center;
     justify-content: space-evenly;
+  }
+  .logo{
+    width: 3rem;
   }
 }
 @media (min-width: 320px) and (max-width: 374px){
@@ -176,6 +193,9 @@ pre{
   }
   table tr{
     font-size: 12px;
+  }
+  .logo{
+    width: 3rem;
   }
   
 }
