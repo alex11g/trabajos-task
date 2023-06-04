@@ -116,7 +116,7 @@ const app = createApp({
         },
         PAGAR() {
             Swal.fire({
-                title: 'Are you sure you want to apply for this loan?',
+                title: 'Are you sure you want to pay??',
                 inputAttributes: {
                     autocapitalize: 'off',
                 },
