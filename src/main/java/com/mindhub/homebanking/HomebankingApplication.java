@@ -23,7 +23,7 @@ public class HomebankingApplication {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
-	/*@Bean
+	@Bean
 	public CommandLineRunner initData(ClientRepository repositoryCliente, AccountRepository repositoryAccount, TransactionRepository repositoryTransaction, LoanRepository repositoryLoan, ClientLoanRepository clientLoanRepository, CardRepository cardRepository) {
 		return (args) -> {
 			// save a couple of customers
@@ -107,6 +107,6 @@ public class HomebankingApplication {
 
 		};
 	}
-*/
+
 
 }
